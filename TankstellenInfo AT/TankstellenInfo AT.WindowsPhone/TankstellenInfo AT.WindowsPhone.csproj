@@ -112,6 +112,12 @@
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\SpritpreisrechnerAtClient\SpritpreisrechnerAtClient.csproj">
+      <Project>{fc6cac4c-0a1a-4f0d-bdd4-5cf75bfb837b}</Project>
+      <Name>SpritpreisrechnerAtClient</Name>
+    </ProjectReference>
+  </ItemGroup>
   <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '12.0' ">
     <VisualStudioVersion>12.0</VisualStudioVersion>
   </PropertyGroup>

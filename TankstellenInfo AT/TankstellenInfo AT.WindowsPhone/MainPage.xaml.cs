@@ -1,19 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Runtime.InteropServices.WindowsRuntime;
-using Windows.Foundation;
-using Windows.Foundation.Collections;
-using Windows.UI.Xaml;
+﻿using Windows.Devices.Geolocation;
 using Windows.UI.Xaml.Controls;
-using Windows.UI.Xaml.Controls.Primitives;
-using Windows.UI.Xaml.Data;
-using Windows.UI.Xaml.Input;
-using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
 
 // The Blank Page item template is documented at http://go.microsoft.com/fwlink/?LinkId=234238
+using SpritpreisrechnerAtClient;
+using SpritpreisrechnerAtClient.Models;
 
 namespace TankstellenInfo_AT
 {
@@ -37,7 +28,8 @@ namespace TankstellenInfo_AT
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
             // TODO: Prepare page for display here.
-
+            var client = new SpritPreisClient();
+            client.GetData(new BasicGeoposition() { Latitude = 48.08301100000001, Longitude = 16.356495699999982 }, SpritType.Super);
             // TODO: If your application contains multiple pages, ensure that you are
             // handling the hardware Back button by registering for the
             // Windows.Phone.UI.Input.HardwareButtons.BackPressed event.
