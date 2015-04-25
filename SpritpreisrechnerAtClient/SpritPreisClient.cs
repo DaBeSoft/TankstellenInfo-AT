@@ -14,7 +14,7 @@ namespace SpritpreisrechnerAtClient
         private readonly Uri _serviceUrl = new Uri("http://www.spritpreisrechner.at/ts/GasStationServlet");
         private const string ContentTemplate = "[\"\",\"{0}\",{1},{2},{3},{4}]";
 
-        public async Task<List<SpritInfo>> GetData(BasicGeoposition position, SpritType type)
+        public async Task<List<SpritInfo>> GetData(BasicGeoposition position, SpritType type, bool sort = true)
         {
             var bottomLeft = new BasicGeoposition() { Longitude = position.Longitude - 0.04 /*16,316736214513785*/, Latitude = position.Latitude - 0.04 /*48,07149781819904*/ };
             var topRight = new BasicGeoposition() { Longitude = position.Longitude + 0.04/*16,396644585490413 */, Latitude = position.Latitude + 0.04/*48,09443362514294*/ };
@@ -33,14 +33,17 @@ namespace SpritpreisrechnerAtClient
 
             var list = JsonConvert.DeserializeObject<List<SpritInfo>>(json);
             list = list.Where(l => l.SpritPrice[0].AmountDouble != -1).ToList();
-            list = SetSortAndDifference(list);
+            if (sort) list = SetSortAndDifference(list);
 
             return list;
         }
 
         public List<SpritInfo> SetSortAndDifference(List<SpritInfo> list)
         {
-            list = list.OrderBy(l => l.SpritPrice[0].AmountDouble).ToList();
+            list = list.Distinct().OrderBy(l => l.SpritPrice[0].AmountDouble).ToList();
+
+            //todo clear double entries!!!
+
 
             var cheapest = list[0].SpritPrice[0].AmountDouble;
             list[0].SortPosition = "1.";

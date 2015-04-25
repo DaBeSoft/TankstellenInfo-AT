@@ -1,14 +1,10 @@
 ﻿using System;
-using Windows.Devices.Geolocation;
-using Windows.UI.Popups;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Navigation;
 
 // The Blank Page item template is documented at http://go.microsoft.com/fwlink/?LinkId=234238
 using Windows.UI.Xaml.Shapes;
-using SpritpreisrechnerAtClient;
-using SpritpreisrechnerAtClient.Models;
 using TankstellenInfo_AT.MainPageSettings;
 using TankstellenInfo_AT.UserControls;
 
@@ -89,7 +85,7 @@ namespace TankstellenInfo_AT
 
         private void abtnSettings_Click(object sender, RoutedEventArgs e)
         {
-            new MessageDialog("Settings not yet implemented").ShowAsync();
+            Frame.Navigate(typeof(SettingsPage));
         }
 
         private void abtnPosition_Click(object sender, RoutedEventArgs e)
