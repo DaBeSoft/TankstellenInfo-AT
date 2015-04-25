@@ -1,22 +1,13 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Runtime.InteropServices.WindowsRuntime;
 using Windows.ApplicationModel;
 using Windows.ApplicationModel.Activation;
-using Windows.Foundation;
-using Windows.Foundation.Collections;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
-using Windows.UI.Xaml.Controls.Primitives;
-using Windows.UI.Xaml.Data;
-using Windows.UI.Xaml.Input;
-using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Media.Animation;
 using Windows.UI.Xaml.Navigation;
 
 // The Blank Application template is documented at http://go.microsoft.com/fwlink/?LinkId=234227
+using TankstellenInfo_AT.MainPageSettings;
 
 namespace TankstellenInfo_AT
 {
@@ -25,6 +16,8 @@ namespace TankstellenInfo_AT
     /// </summary>
     public sealed partial class App : Application
     {
+        public static IMainPageSettings MainPageSettings = new NearMePage(); //todo load this from settings -> load latest page on start
+
 #if WINDOWS_PHONE_APP
         private TransitionCollection transitions;
 #endif
@@ -64,7 +57,7 @@ namespace TankstellenInfo_AT
                 rootFrame = new Frame();
 
                 // TODO: change this value to a cache size that is appropriate for your application
-                rootFrame.CacheSize = 1;
+                rootFrame.CacheSize = 0;
 
                 if (e.PreviousExecutionState == ApplicationExecutionState.Terminated)
                 {

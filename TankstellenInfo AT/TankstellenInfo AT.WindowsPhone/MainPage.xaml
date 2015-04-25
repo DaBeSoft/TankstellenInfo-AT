@@ -9,21 +9,33 @@
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
     <Grid>
-
+        <StackPanel x:Name="MainStackPanel">
+            <StackPanel x:Name="spTitle" Orientation="Horizontal">
+                <TextBlock x:Name="lblTitle" Margin="0,10,0,0" TextWrapping="Wrap" Text="In meiner Nähe" FontWeight="Bold" FontSize="36"/>
+                <Button x:Name="btnRefresh" Margin="25,0,0,0" HorizontalAlignment="Right" Content="Refresh" Width="95" Click="Button_Click"/>
+            </StackPanel>
+            <!-- Custom User Control-->
+            <!-- Ad Space -->
+            <!-- Content Scroll and StackPanel-->
+        </StackPanel>
+    </Grid>
+    <!--<Grid>
+<
+        
+        
+        
         <ScrollViewer Margin="0,58,0,0" >
             <StackPanel Name="StackPanel" HorizontalAlignment="Left" 
                         Margin="10,10,0,0" VerticalAlignment="Top" Width="380"/>
         </ScrollViewer>
-        <TextBlock HorizontalAlignment="Left" Margin="10,10,0,0" TextWrapping="Wrap" Text="In meiner Nähe" VerticalAlignment="Top" FontWeight="Bold" FontSize="36"/>
-        <Button x:Name="btnRefresh" Content="Refresh" HorizontalAlignment="Left" VerticalAlignment="Top" Width="95" Margin="281,0,0,0" Click="Button_Click"/>
-        <ProgressBar x:Name="progressBar" Visibility="Collapsed" HorizontalAlignment="Left" Height="13" Margin="10,337,0,0" VerticalAlignment="Top" Width="380" IsIndeterminate="True"/>
+                <ProgressBar x:Name="progressBar" Visibility="Collapsed" HorizontalAlignment="Left" Height="13" Margin="10,337,0,0" VerticalAlignment="Top" Width="380" IsIndeterminate="True"/>
 
 
-    </Grid>
+    </Grid>-->
 
     <Page.BottomAppBar>
-        <CommandBar>
-            <AppBarButton x:Name="abtnPosition" Label="Position" Icon="MapPin" IsEnabled="False"/>
+        <CommandBar Opened="CommandBar_Opened">
+            <AppBarButton x:Name="abtnPosition" Label="Position" Icon="MapPin" Click="abtnPosition_Click"/>
             <AppBarButton x:Name="abtnFavorites" Label="Favoriten" Icon="Favorite" Click="abtnFavorites_Click"/>
             <AppBarButton x:Name="abtnDirection" Label="Route" Icon="Directions" Click="abtnDirection_Click"/>
             <AppBarButton x:Name="abtnSettings" Label="Optionen" Icon="Setting" Click="abtnSettings_Click"/>

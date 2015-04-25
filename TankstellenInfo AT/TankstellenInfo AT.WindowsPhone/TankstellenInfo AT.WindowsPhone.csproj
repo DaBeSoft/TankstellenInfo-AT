@@ -80,9 +80,13 @@
     <Prefer32Bit>true</Prefer32Bit>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="MainPageSettings\FavoritesPage.cs" />
+    <Compile Include="MainPageSettings\IMainPageSettings.cs" />
     <Compile Include="MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="MainPageSettings\NearMePage.cs" />
+    <Compile Include="MainPageSettings\RoutePage.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="UserControls\GasInfoControl.xaml.cs">
       <DependentUpon>GasInfoControl.xaml</DependentUpon>
