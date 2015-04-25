@@ -43,7 +43,7 @@ namespace SpritpreisrechnerAtClient
             list = list.Distinct().OrderBy(l => l.SpritPrice[0].AmountDouble).ToList();
 
             //todo clear double entries!!!
-
+            list = CheckDoubles(0, list);
 
             var cheapest = list[0].SpritPrice[0].AmountDouble;
             list[0].SortPosition = "1.";
@@ -56,6 +56,23 @@ namespace SpritpreisrechnerAtClient
             }
             return list;
 
+        }
+
+        private static List<SpritInfo> CheckDoubles(int i, List<SpritInfo> list)
+        {
+            for (; i < list.Count; i++)
+            {
+                for (int j = i + 1; j < list.Count; j++)
+                {
+                    if (list[i].GasStationName == list[j].GasStationName && list[i].Address == list[j].Address &&
+                        list[i].CityAndPostalCode == list[j].CityAndPostalCode)
+                    {
+                        list.RemoveAt(j);
+                        return CheckDoubles(i, list);
+                    }
+                }
+            }
+            return list;
         }
     }
 }
