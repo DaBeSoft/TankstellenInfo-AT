@@ -8,13 +8,28 @@
     mc:Ignorable="d"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
-    <Grid><ScrollViewer >
+    <Grid>
+
+        <ScrollViewer Margin="0,58,0,0" >
             <StackPanel Name="StackPanel" HorizontalAlignment="Left" 
-                        Margin="10,10,0,0" VerticalAlignment="Top" Width="380">
-                <Button Content="Button" HorizontalAlignment="Left" VerticalAlignment="Top" Width="360" Margin="10,0,0,0" Click="Button_Click"/>
-            </StackPanel>
+                        Margin="10,10,0,0" VerticalAlignment="Top" Width="380"/>
         </ScrollViewer>
-        
+        <TextBlock HorizontalAlignment="Left" Margin="10,10,0,0" TextWrapping="Wrap" Text="In meiner Nähe" VerticalAlignment="Top" FontWeight="Bold" FontSize="36"/>
+        <Button x:Name="btnRefresh" Content="Refresh" HorizontalAlignment="Left" VerticalAlignment="Top" Width="95" Margin="281,0,0,0" Click="Button_Click"/>
+        <ProgressBar x:Name="progressBar" Visibility="Collapsed" HorizontalAlignment="Left" Height="13" Margin="10,337,0,0" VerticalAlignment="Top" Width="380" IsIndeterminate="True"/>
+
 
     </Grid>
+
+    <Page.BottomAppBar>
+        <CommandBar>
+            <AppBarButton x:Name="abtnPosition" Label="Position" Icon="MapPin" IsEnabled="False"/>
+            <AppBarButton x:Name="abtnFavorites" Label="Favoriten" Icon="Favorite" Click="abtnFavorites_Click"/>
+            <AppBarButton x:Name="abtnDirection" Label="Route" Icon="Directions" Click="abtnDirection_Click"/>
+            <AppBarButton x:Name="abtnSettings" Label="Optionen" Icon="Setting" Click="abtnSettings_Click"/>
+            <CommandBar.SecondaryCommands>
+                <AppBarButton Label="Test"/>
+            </CommandBar.SecondaryCommands>
+        </CommandBar>
+    </Page.BottomAppBar>
 </Page>

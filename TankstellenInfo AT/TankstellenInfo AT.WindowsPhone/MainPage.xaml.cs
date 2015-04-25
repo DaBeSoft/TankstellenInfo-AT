@@ -1,5 +1,7 @@
 ﻿using System;
 using Windows.Devices.Geolocation;
+using Windows.UI.Popups;
+using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Navigation;
 
@@ -29,19 +31,18 @@ namespace TankstellenInfo_AT
         /// This parameter is typically used to configure the page.</param>
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
-            // TODO: Prepare page for display here.
-            
-            // TODO: If your application contains multiple pages, ensure that you are
-            // handling the hardware Back button by registering for the
-            // Windows.Phone.UI.Input.HardwareButtons.BackPressed event.
-            // If you are using the NavigationHelper provided by some templates,
-            // this event is handled for you.
+            Button_Click(null, null);
         }
 
-        private async void Button_Click(object sender, Windows.UI.Xaml.RoutedEventArgs e)
+        private async void Button_Click(object sender, RoutedEventArgs e)
         {
+            btnRefresh.IsEnabled = false;
+            progressBar.Visibility = Visibility.Visible;
+            StackPanel.Children.Clear();
+
+
             var a = new Geolocator();
-            Geoposition b = await a.GetGeopositionAsync();
+            var b = await a.GetGeopositionAsync();
             
             var client = new SpritPreisClient();
             var results = await client.GetData(b.Coordinate.Point.Position, SpritType.Super);
@@ -51,6 +52,27 @@ namespace TankstellenInfo_AT
                 var test = new GasInfoControl(result);
                 StackPanel.Children.Add(test);
             }
+
+            btnRefresh.IsEnabled = true;
+            progressBar.Visibility = Visibility.Collapsed;
+
+        }
+
+        private void abtnFavorites_Click(object sender, RoutedEventArgs e)
+        {
+            new MessageDialog("Tankstellen in der Nähe von favorisierten Orten ist noch nicht implementiert!").ShowAsync();
+        }
+
+        private void abtnDirection_Click(object sender, RoutedEventArgs e)
+        {
+            new MessageDialog("Tankstellen entlang einer Route ist noch nicht implementiert!").ShowAsync();
+
+        }
+
+        private void abtnSettings_Click(object sender, RoutedEventArgs e)
+        {
+            new MessageDialog("Einstellungen ist noch nicht implementiert!").ShowAsync();
+
         }
     }
 }
