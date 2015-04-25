@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 using Windows.Devices.Geolocation;
 using Windows.Web.Http;
@@ -31,8 +32,27 @@ namespace SpritpreisrechnerAtClient
             var json = result.Content.ToString();
 
             var list = JsonConvert.DeserializeObject<List<SpritInfo>>(json);
+            list = list.Where(l => l.SpritPrice[0].AmountDouble != -1).ToList();
+            list = SetSortAndDifference(list);
+
             return list;
         }
 
+        public List<SpritInfo> SetSortAndDifference(List<SpritInfo> list)
+        {
+            list = list.OrderBy(l => l.SpritPrice[0].AmountDouble).ToList();
+
+            var cheapest = list[0].SpritPrice[0].AmountDouble;
+            list[0].SortPosition = "1.";
+            list[0].PriceDifference = "0,00€";
+
+            for (int i = 1; i < list.Count; i++)
+            {
+                list[i].SortPosition = (i + 1) + ".";
+                list[i].PriceDifference = "(+" + Math.Round(list[i].SpritPrice[0].AmountDouble - cheapest, 3) + "€)";
+            }
+            return list;
+
+        }
     }
 }

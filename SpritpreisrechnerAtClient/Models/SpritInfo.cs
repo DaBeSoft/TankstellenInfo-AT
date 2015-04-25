@@ -91,5 +91,22 @@ namespace SpritpreisrechnerAtClient.Models
 
         [JsonProperty(PropertyName = "telephone")]
         public string Telephone { get; set; }
+
+        [JsonIgnore]
+        public string PriceAndType
+        {
+            get { return string.Format("{0} ({1})", SpritPrice[0].Amount, SpritPrice[0].SpritType); }
+        }
+
+        [JsonIgnore]
+        public string CityAndPostalCode
+        {
+            get { return string.Format("{0} {1}", PostalCode, City); }
+        }
+
+        [JsonIgnore]
+        public string PriceDifference { get; set; }
+        [JsonIgnore]
+        public string SortPosition { get; set; }
     }
 }
