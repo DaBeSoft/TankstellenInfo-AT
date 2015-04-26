@@ -62,7 +62,7 @@ namespace SpritpreisrechnerAtClient
         {
             for (; i < list.Count; i++)
             {
-                for (int j = i + 1; j < list.Count; j++)
+                for (var j = i + 1; j < list.Count; j++)
                 {
                     if (list[i].GasStationName == list[j].GasStationName && list[i].Address == list[j].Address &&
                         list[i].CityAndPostalCode == list[j].CityAndPostalCode)

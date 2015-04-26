@@ -14,6 +14,51 @@ using SpritpreisrechnerAtClient.Models;
 
 namespace TankstellenInfo_AT.UserControls
 {
+
+    class MapLocationStringFriendly 
+    {
+        private readonly MapLocation _gp;
+
+        public MapLocation MapLocation { get { return _gp; } }
+
+        public MapLocationStringFriendly(MapLocation gp)
+        {
+            _gp = gp;
+        }
+
+        public override string ToString()
+        {
+            string retval = "";
+
+
+            if (!string.IsNullOrEmpty(_gp.DisplayName))
+                return _gp.DisplayName;
+
+
+            if (!string.IsNullOrEmpty(_gp.Address.Street))
+            {
+                retval += _gp.Address.Street;
+                if (!string.IsNullOrEmpty(_gp.Address.StreetNumber))
+                {
+                    retval += " " + _gp.Address.StreetNumber;
+                }
+                retval += ", ";
+            }
+
+            if (!string.IsNullOrEmpty(_gp.Address.PostCode))
+            {
+                retval += _gp.Address.PostCode;
+                if (!string.IsNullOrEmpty(_gp.Address.Town))
+                {
+                    retval += " " + _gp.Address.Town;
+                }
+            }
+
+            return retval;
+
+        }
+    }
+
     public sealed partial class RouteSettings : UserControl
     {
         public RouteSettings()
@@ -29,6 +74,7 @@ namespace TankstellenInfo_AT.UserControls
                 if (sender.Text.Length > 3)
                 {
                     sender.ItemsSource = await GetSuggestions(sender.Text);
+                    
                 }
                 else
                 {
@@ -37,11 +83,13 @@ namespace TankstellenInfo_AT.UserControls
             }
         }
 
-        private static async Task<object> GetSuggestions(string text)
+        private static async Task<IEnumerable<MapLocationStringFriendly>> GetSuggestions(string text)
         {
             var result = await MapLocationFinder.FindLocationsAsync(text, new Geopoint(new BasicGeoposition() { Latitude = 48.209206, Longitude = 16.372778 }), 7);
-            //return result.Locations.Select(l => string.Format("{0} {1}, {2} {3}", l.Address.Street, l.Address.StreetNumber, l.Address.PostCode, l.Address.Town)).ToList();
-            return result.Locations.Select(l => l.Point).ToList();
+
+            var retVal = result.Locations.Select(l => new MapLocationStringFriendly(l)).ToList();
+
+            return retVal;
         }
 
         private Geopoint p1;
@@ -50,11 +98,10 @@ namespace TankstellenInfo_AT.UserControls
         private void AutoSuggestBox_SuggestionChosen(AutoSuggestBox sender, AutoSuggestBoxSuggestionChosenEventArgs args)
         {
             if (sender.Name == "asb1")
-                p1 = (Geopoint)args.SelectedItem;
+                p1 = ((MapLocationStringFriendly)args.SelectedItem).MapLocation.Point;
             else
-            {
-                p2 = (Geopoint)args.SelectedItem;
-            }
+                p2 = ((MapLocationStringFriendly)args.SelectedItem).MapLocation.Point;
+
             sender.Text = args.SelectedItem.ToString();
         }
 
@@ -89,12 +136,6 @@ namespace TankstellenInfo_AT.UserControls
 
                     }
                 }
-
-
-                //foreach (var pos in routeResult.Route.Path.Positions)
-                //{
-                //    myInfo.AddRange(await client.GetData(pos, SpritType.Super));
-                //}
 
                 myInfo = client.SetSortAndDifference(myInfo);
 
