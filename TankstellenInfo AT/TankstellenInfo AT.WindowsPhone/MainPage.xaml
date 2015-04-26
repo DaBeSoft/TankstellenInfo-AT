@@ -6,18 +6,28 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d"
-    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}" Loaded="Page_Loaded">
 
-    <Grid>
-        <StackPanel x:Name="MainStackPanel">
-            <StackPanel x:Name="spTitle" Orientation="Horizontal">
-                <TextBlock x:Name="lblTitle" Margin="0,10,0,0" TextWrapping="Wrap" Text="In meiner Nähe" FontWeight="Bold" FontSize="36"/>
-                <Button x:Name="btnRefresh" Margin="25,0,0,0" HorizontalAlignment="Right" Content="Refresh" Width="95" Click="Button_Click"/>
+    <Grid x:Name="MainGrid">
+        <Grid.RowDefinitions>
+            <RowDefinition Height ="100" x:Name="HeaderRow"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+
+        <!--<StackPanel x:Name="MainStackPanel" Height="730" Margin="0,0,0,-150" Grid.RowSpan="2">-->
+        <StackPanel Grid.Row="0" x:Name="spHeader" >
+            <StackPanel  x:Name="spTitle" Orientation="Horizontal">
+                <TextBlock x:Name="lblTitle" TextWrapping="Wrap" Text="NearMe" FontWeight="Bold" FontSize="36" Margin="0,10,0,0" VerticalAlignment="Top" Width="275"/>
+                <Button x:Name="btnRefresh" Margin="10,0,0,0" Content="Refresh" Click="Button_Click" VerticalAlignment="Top"/>
             </StackPanel>
             <!-- Custom User Control-->
             <!-- Ad Space -->
-            <!-- Content Scroll and StackPanel-->
         </StackPanel>
+        <ScrollViewer Grid.Row="1" >
+            <StackPanel Name="ContentPanel"/>
+        </ScrollViewer>
+        <!--</StackPanel>-->
     </Grid>
     <!--<Grid>
 <

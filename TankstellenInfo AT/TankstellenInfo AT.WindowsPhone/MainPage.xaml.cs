@@ -15,8 +15,6 @@ namespace TankstellenInfo_AT
     /// </summary>
     public sealed partial class MainPage : Page
     {
-        private StackPanel ContentPanel;
-
         public MainPage()
         {
             this.InitializeComponent();
@@ -33,8 +31,8 @@ namespace TankstellenInfo_AT
         {
             lblTitle.Text = App.MainPageSettings.Title;
 
-            if (App.MainPageSettings.PageSpecificControl != null) MainStackPanel.Children.Add(App.MainPageSettings.PageSpecificControl);
-            MainStackPanel.Children.Add(new Rectangle() { Fill = BorderBrush, Height = 80 });
+            if (App.MainPageSettings.PageSpecificControl != null) spHeader.Children.Add(App.MainPageSettings.PageSpecificControl);
+            spHeader.Children.Add(new Rectangle() { Fill = Foreground, Height = 80 });
 
             if (App.MainPageSettings.GetType() == typeof (NearMePage))
                 abtnPosition.IsEnabled = false;
@@ -43,14 +41,10 @@ namespace TankstellenInfo_AT
             if (App.MainPageSettings.GetType() == typeof(FavoritesPage))
                 abtnFavorites.IsEnabled = false;
 
-            var scrollView = new ScrollViewer { MaxHeight = 800 - 58 - 80 - 60 - (App.MainPageSettings.PageSpecificControl != null ? App.MainPageSettings.PageSpecificControl.MinHeight : 0) };
-            ContentPanel = new StackPanel();
-            scrollView.Content = ContentPanel;
-            MainStackPanel.Children.Add(scrollView);
-
 
             Button_Click(null, null);
         }
+
 
         private async void Button_Click(object sender, RoutedEventArgs e)
         {
@@ -97,6 +91,12 @@ namespace TankstellenInfo_AT
         private void CommandBar_Opened(object sender, object e)
         {
 
+        }
+
+        private void Page_Loaded(object sender, RoutedEventArgs e)
+        {
+            HeaderRow.Height = new GridLength(spHeader.ActualHeight);
+            
         }
     }
 }

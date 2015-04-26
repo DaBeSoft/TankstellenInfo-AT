@@ -6,9 +6,6 @@ using Windows.Devices.Geolocation;
 using Windows.Services.Maps;
 using Windows.UI.Popups;
 using Windows.UI.Xaml.Controls;
-
-// The User Control item template is documented at http://go.microsoft.com/fwlink/?LinkId=234236
-using Windows.UI.Xaml.Documents;
 using SpritpreisrechnerAtClient;
 using SpritpreisrechnerAtClient.Models;
 
@@ -28,7 +25,7 @@ namespace TankstellenInfo_AT.UserControls
 
         public override string ToString()
         {
-            string retval = "";
+            var retval = "";
 
 
             if (!string.IsNullOrEmpty(_gp.DisplayName))
@@ -114,7 +111,7 @@ namespace TankstellenInfo_AT.UserControls
                 return myInfo;
             }
 
-            MapRouteFinderResult routeResult =
+            var routeResult =
                 await MapRouteFinder.GetDrivingRouteAsync(
                     p1,
                     p2,
@@ -142,7 +139,7 @@ namespace TankstellenInfo_AT.UserControls
             }
             else
             {
-                new MessageDialog("PROBLEM").ShowAsync();
+                new MessageDialog("PROBLEM").ShowAsync(); //todo
             }
             return myInfo;
 
