@@ -1,8 +1,10 @@
 ﻿using System;
+using System.Runtime.InteropServices.WindowsRuntime;
 using Windows.ApplicationModel;
 using Windows.ApplicationModel.Activation;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
+using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Media.Animation;
 using Windows.UI.Xaml.Navigation;
 
@@ -17,7 +19,7 @@ namespace TankstellenInfo_AT
     public sealed partial class App : Application
     {
         public static IMainPageSettings MainPageSettings = new NearMePage(); //todo load this from settings -> load latest page on start
-
+        public static Frame Frame { get; set; }
 #if WINDOWS_PHONE_APP
         private TransitionCollection transitions;
 #endif
@@ -48,7 +50,6 @@ namespace TankstellenInfo_AT
 #endif
 
             Frame rootFrame = Window.Current.Content as Frame;
-
             // Do not repeat app initialization when the Window already has content,
             // just ensure that the window is active
             if (rootFrame == null)
@@ -67,6 +68,9 @@ namespace TankstellenInfo_AT
                 // Place the frame in the current Window
                 Window.Current.Content = rootFrame;
             }
+
+            rootFrame.CacheSize = 0;
+            Frame = rootFrame;
 
             if (rootFrame.Content == null)
             {

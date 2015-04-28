@@ -40,6 +40,9 @@ namespace SpritpreisrechnerAtClient
 
         public List<SpritInfo> SetSortAndDifference(List<SpritInfo> list)
         {
+            if (list == null || list.Count == 0)
+                return list;
+
             list = list.Distinct().OrderBy(l => l.SpritPrice[0].AmountDouble).ToList();
 
             //todo clear double entries!!!

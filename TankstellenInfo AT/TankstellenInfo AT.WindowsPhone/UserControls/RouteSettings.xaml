@@ -9,29 +9,9 @@
     d:DesignWidth="400" Height="145.833">
 
     <Grid>
-        <AutoSuggestBox x:Name="asb1" 
-   TextChanged="AutoSuggestBox_TextChanged"
-   SuggestionChosen="AutoSuggestBox_SuggestionChosen">
-            <AutoSuggestBox.ItemTemplate>
-                <DataTemplate>
-                    <StackPanel Orientation="Horizontal">
-                        <TextBlock Text="{Binding}" />
-                    </StackPanel>
-                </DataTemplate>
-            </AutoSuggestBox.ItemTemplate>
-        </AutoSuggestBox>
-
-        <AutoSuggestBox x:Name="asb2" 
-   TextChanged="AutoSuggestBox_TextChanged"
-   SuggestionChosen="AutoSuggestBox_SuggestionChosen" Margin="0,72,0,0">
-            <AutoSuggestBox.ItemTemplate>
-                <DataTemplate>
-                    <StackPanel Orientation="Horizontal">
-                        <TextBlock Text="{Binding}" />
-                    </StackPanel>
-                </DataTemplate>
-            </AutoSuggestBox.ItemTemplate>
-        </AutoSuggestBox>
-
+        <StackPanel>
+            <local:GeolocationAutocompleteBox x:Name="PosBox1"></local:GeolocationAutocompleteBox>
+            <local:GeolocationAutocompleteBox x:Name="PosBox2"></local:GeolocationAutocompleteBox>
+        </StackPanel>
     </Grid>
 </UserControl>

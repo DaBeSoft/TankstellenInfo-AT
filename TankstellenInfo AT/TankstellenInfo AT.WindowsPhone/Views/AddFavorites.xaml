@@ -1,0 +1,22 @@
+﻿<Page
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:TankstellenInfo_AT.Views"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:UserControls="using:TankstellenInfo_AT.UserControls"
+    x:Class="TankstellenInfo_AT.Views.AddFavorites"
+    mc:Ignorable="d"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+
+    <Grid>
+        <TextBlock HorizontalAlignment="Left" Margin="10,10,0,0" TextWrapping="Wrap" Text="Favoriten hinzufügen/editieren" VerticalAlignment="Top"/>
+        <TextBlock HorizontalAlignment="Left" Margin="10,65,0,0" TextWrapping="Wrap" Text="Position:" VerticalAlignment="Top"/>
+        <TextBlock HorizontalAlignment="Left" Margin="10,136,0,0" TextWrapping="Wrap" Text="Name:" VerticalAlignment="Top"/>
+        <TextBox x:Name="tbName" HorizontalAlignment="Left" Margin="23,154,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="338"/>
+
+        <UserControls:GeolocationAutocompleteBox x:Name="Asb" HorizontalAlignment="Left" Margin="0,73,0,0" VerticalAlignment="Top"/>
+        <Button Content="Speichern" HorizontalAlignment="Left" Margin="115,240,0,0" VerticalAlignment="Top" Click="Button_Click"/>
+
+    </Grid>
+</Page>

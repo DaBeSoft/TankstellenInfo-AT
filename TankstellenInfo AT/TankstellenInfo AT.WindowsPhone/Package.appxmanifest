@@ -1,10 +1,10 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Package xmlns="http://schemas.microsoft.com/appx/2010/manifest" xmlns:m2="http://schemas.microsoft.com/appx/2013/manifest" xmlns:m3="http://schemas.microsoft.com/appx/2014/manifest" xmlns:mp="http://schemas.microsoft.com/appx/2014/phone/manifest">
-  <Identity Name="b18d255d-714b-4a4a-8ff2-023d45c796ec" Publisher="CN=Daniel" Version="1.0.0.0" />
-  <mp:PhoneIdentity PhoneProductId="b18d255d-714b-4a4a-8ff2-023d45c796ec" PhonePublisherId="00000000-0000-0000-0000-000000000000" />
+  <Identity Name="34168DaBeSoft.TankstellenInfoATBETA" Publisher="CN=9A749F41-8E14-46D2-ACF9-3A2B46355140" Version="0.1.0.0" />
+  <mp:PhoneIdentity PhoneProductId="d83f889d-a33a-4b18-9f3a-b6a38ecab602" PhonePublisherId="00000000-0000-0000-0000-000000000000" />
   <Properties>
-    <DisplayName>TankstellenInfo AT.WindowsPhone</DisplayName>
-    <PublisherDisplayName>Daniel</PublisherDisplayName>
+    <DisplayName>TankstellenInfo AT BETA</DisplayName>
+    <PublisherDisplayName>DaBeSoft</PublisherDisplayName>
     <Logo>Assets\StoreLogo.png</Logo>
   </Properties>
   <Prerequisites>
@@ -16,7 +16,7 @@
   </Resources>
   <Applications>
     <Application Id="App" Executable="$targetnametoken$.exe" EntryPoint="TankstellenInfo_AT.WindowsPhone.App">
-      <m3:VisualElements DisplayName="TankstellenInfo AT.WindowsPhone" Square150x150Logo="Assets\Logo.png" Square44x44Logo="Assets\SmallLogo.png" Description="TankstellenInfo AT.WindowsPhone" ForegroundText="light" BackgroundColor="transparent">
+      <m3:VisualElements DisplayName="TankstellenInfo AT BETA" Square150x150Logo="Assets\Logo.png" Square44x44Logo="Assets\SmallLogo.png" Description="TankstellenInfo AT.WindowsPhone" ForegroundText="light" BackgroundColor="transparent">
         <m3:DefaultTile Wide310x150Logo="Assets\WideLogo.png" Square71x71Logo="Assets\Square71x71Logo.png">
         </m3:DefaultTile>
         <m3:SplashScreen Image="Assets\SplashScreen.png" />

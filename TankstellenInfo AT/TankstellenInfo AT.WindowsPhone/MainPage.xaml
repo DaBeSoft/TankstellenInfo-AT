@@ -10,21 +10,24 @@
 
     <Grid x:Name="MainGrid">
         <Grid.RowDefinitions>
-            <RowDefinition Height ="100" x:Name="HeaderRow"/>
-            <RowDefinition Height="*"/>
+            <RowDefinition Height ="55" />
+            <RowDefinition Height="46" x:Name="HeaderRow"/>
+            <RowDefinition/>
         </Grid.RowDefinitions>
 
 
         <!--<StackPanel x:Name="MainStackPanel" Height="730" Margin="0,0,0,-150" Grid.RowSpan="2">-->
-        <StackPanel Grid.Row="0" x:Name="spHeader" >
-            <StackPanel  x:Name="spTitle" Orientation="Horizontal">
-                <TextBlock x:Name="lblTitle" TextWrapping="Wrap" Text="NearMe" FontWeight="Bold" FontSize="36" Margin="0,10,0,0" VerticalAlignment="Top" Width="275"/>
-                <Button x:Name="btnRefresh" Margin="10,0,0,0" Content="Refresh" Click="Button_Click" VerticalAlignment="Top"/>
-            </StackPanel>
+
+        <StackPanel Grid.Row="0" x:Name="spTitle" Orientation="Horizontal" Grid.RowSpan="2">
+            <TextBlock x:Name="lblTitle" TextWrapping="Wrap" Text="NearMe" FontWeight="Bold" FontSize="36" Margin="0,10,0,0" VerticalAlignment="Top" Width="275"/>
+            <Button x:Name="btnRefresh" Margin="10,0,0,0" Content="Refresh" Click="Button_Click" VerticalAlignment="Top"/>
+        </StackPanel>
+        <StackPanel Grid.Row="1" x:Name="spHeader" >
+
             <!-- Custom User Control-->
             <!-- Ad Space -->
         </StackPanel>
-        <ScrollViewer Grid.Row="1" >
+        <ScrollViewer Grid.Row="2" >
             <StackPanel Name="ContentPanel"/>
         </ScrollViewer>
         <!--</StackPanel>-->

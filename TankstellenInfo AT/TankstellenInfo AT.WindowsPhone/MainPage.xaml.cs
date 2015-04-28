@@ -2,8 +2,6 @@
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Navigation;
-
-// The Blank Page item template is documented at http://go.microsoft.com/fwlink/?LinkId=234238
 using Windows.UI.Xaml.Shapes;
 using TankstellenInfo_AT.MainPageSettings;
 using TankstellenInfo_AT.UserControls;
@@ -30,7 +28,7 @@ namespace TankstellenInfo_AT
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
             lblTitle.Text = App.MainPageSettings.Title;
-
+            spHeader.Children.Clear();
             if (App.MainPageSettings.PageSpecificControl != null) spHeader.Children.Add(App.MainPageSettings.PageSpecificControl);
             spHeader.Children.Add(new Rectangle() { Fill = Foreground, Height = 80 });
 
@@ -79,6 +77,7 @@ namespace TankstellenInfo_AT
 
         private void abtnSettings_Click(object sender, RoutedEventArgs e)
         {
+            spHeader.Children.Clear();
             Frame.Navigate(typeof(SettingsPage));
         }
 
@@ -96,7 +95,14 @@ namespace TankstellenInfo_AT
         private void Page_Loaded(object sender, RoutedEventArgs e)
         {
             HeaderRow.Height = new GridLength(spHeader.ActualHeight);
-            
         }
+
+        protected override void OnNavigatingFrom(NavigatingCancelEventArgs e)
+        {
+            spHeader.Children.Clear();
+
+        }
+
+
     }
 }
