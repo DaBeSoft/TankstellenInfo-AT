@@ -1,6 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Diagnostics;
+﻿using System.Collections.Generic;
 using Newtonsoft.Json;
 
 namespace SpritpreisrechnerAtClient.Models
@@ -8,24 +6,7 @@ namespace SpritpreisrechnerAtClient.Models
     public class SpritPrice
     {
         [JsonProperty(PropertyName = "amount")]
-        public string Amount { get; set; }
-
-        [JsonIgnore]
-        internal double AmountDouble
-        {
-            get
-            {
-                try
-                {
-                    return Convert.ToDouble(Amount);
-                }
-                catch (FormatException e)
-                {
-                    Debug.WriteLine("FORMAT ERROR");
-                    return -1;
-                }
-            }
-        }
+        public double? Amount { get; set; }
 
         [JsonProperty(PropertyName = "datAnounce")]
         public string DatAnounce { get; set; }

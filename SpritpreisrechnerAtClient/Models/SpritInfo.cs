@@ -30,7 +30,7 @@ namespace SpritpreisrechnerAtClient.Models
         public string PostalCode { get; set; }
 
         [JsonProperty(PropertyName = "errorItems")]
-        public List<object> ErrorItems { get; set; }
+        public List<ErrorItem> ErrorItems { get; set; }
 
         [JsonProperty(PropertyName = "priceSearchDisabled")]
         public bool PriceSearchDisabled { get; set; }
@@ -109,4 +109,16 @@ namespace SpritpreisrechnerAtClient.Models
         [JsonIgnore]
         public string SortPosition { get; set; }
     }
+
+
+    public class ErrorItem
+    {
+        [JsonProperty("field")]
+        public string Field { get; set; }
+        [JsonProperty("error")]
+        public string Error { get; set; }
+        [JsonProperty("msgText")]
+        public string MsgText { get; set; }
+    }
 }
+

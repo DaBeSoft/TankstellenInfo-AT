@@ -34,6 +34,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="GeoCalculator.cs" />
     <Compile Include="Models\Day.cs" />
     <Compile Include="Models\OpeningHour.cs" />
     <Compile Include="Models\SpritInfo.cs" />

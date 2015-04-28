@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Package xmlns="http://schemas.microsoft.com/appx/2010/manifest" xmlns:m2="http://schemas.microsoft.com/appx/2013/manifest" xmlns:m3="http://schemas.microsoft.com/appx/2014/manifest" xmlns:mp="http://schemas.microsoft.com/appx/2014/phone/manifest">
-  <Identity Name="34168DaBeSoft.TankstellenInfoATBETA" Publisher="CN=9A749F41-8E14-46D2-ACF9-3A2B46355140" Version="0.1.0.0" />
+  <Identity Name="34168DaBeSoft.TankstellenInfoATBETA" Publisher="CN=9A749F41-8E14-46D2-ACF9-3A2B46355140" Version="0.1.1.0" />
   <mp:PhoneIdentity PhoneProductId="d83f889d-a33a-4b18-9f3a-b6a38ecab602" PhonePublisherId="00000000-0000-0000-0000-000000000000" />
   <Properties>
     <DisplayName>TankstellenInfo AT BETA</DisplayName>
